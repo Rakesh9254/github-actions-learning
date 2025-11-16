@@ -10,6 +10,11 @@
 
     <dependencies>
 
+             <systemPropertyVariables>
+    <allure.results.directory>target/allure-results</allure.results.directory>
+</systemPropertyVariables>
+
+
         <!-- Selenium Java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
