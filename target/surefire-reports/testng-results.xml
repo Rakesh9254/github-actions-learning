@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-11-16T18:26:13 IST" name="Selenium Suite" finished-at="2025-11-16T18:26:23 IST" duration-ms="9427">
+    <groups>
+    </groups>
+    <test started-at="2025-11-16T18:26:13 IST" name="Google Test" finished-at="2025-11-16T18:26:23 IST" duration-ms="9427">
+      <class name="com.rakesh.tests.GoogleTest">
+        <test-method signature="openGoogle()[pri:0, instance:com.rakesh.tests.GoogleTest@47542153]" started-at="2025-11-16T18:26:13 IST" name="openGoogle" finished-at="2025-11-16T18:26:23 IST" duration-ms="9412" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openGoogle -->
+      </class> <!-- com.rakesh.tests.GoogleTest -->
+    </test> <!-- Google Test -->
+  </suite> <!-- Selenium Suite -->
+</testng-results>

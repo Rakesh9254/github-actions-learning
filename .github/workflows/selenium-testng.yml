@@ -1,0 +1,47 @@
+name: Selenium TestNG CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  selenium-tests:
+    name: Run Selenium + TestNG Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Cache Maven Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable || true
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install ./google-chrome-stable_current_amd64.deb -y
+
+      - name: Verify Chrome Installation
+        run: google-chrome --version
+
+      - name: Run Maven Tests (TestNG)
+        run: mvn clean test -DsuiteXmlFile=testng.xml
+
+      - name: Upload TestNG Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: testng-reports
+          path: target/surefire-reports/
